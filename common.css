@@ -33,8 +33,8 @@ a{
 
 [data-scroll]{
   opacity: 0;
-  will-change: transform, scale, opacity;
-  transform: translateX(-50%) ;
+  will-change: transform, opacity;
+  transform: translateY(60%) ;
   transition: all .5s;
 }
 [data-scroll=in]{
