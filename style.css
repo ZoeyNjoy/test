@@ -149,6 +149,24 @@ main .about{
   width: 49%;
   position: relative;
 }
+@keyframes fade1{
+  0%{
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes fade2{
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-50%);
+  }
+}
 .about section .left a:hover::before{
   content: '';
   width: 100%;
@@ -219,26 +237,7 @@ main .about{
 /* skill */
 main .skill{
   width: 100%;
-  opacity: 0;
   margin-top: 300px;
-}
-@keyframes fade1{
-  0%{
-    transform: translateY(50%);
-    opacity: 0;
-  }
-  100%{
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-@keyframes fade2{
-  0%{
-    transform: translateY(0%);
-  }
-  100%{
-    transform: translateY(50%);
-  }
 }
 .skill section{
   max-width: 1200px;

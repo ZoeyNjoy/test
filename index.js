@@ -21,7 +21,7 @@ $(function(){
     })
   });
   
-  let fade = document.querySelectorAll('.skill')
+  let fade = document.querySelectorAll('.left')
   observer.observe(fade[0])
 
   ScrollOut({
