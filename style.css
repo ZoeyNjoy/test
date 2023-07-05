@@ -56,57 +56,68 @@ nav li{
 nav li a{
   display: block;
   width: 100%;
+  color: #888;
 }
-
+nav li a:hover{
+  transition: all .5s;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--basicFont);
+}
 
 
 /* 메인 */
 main{
   width: 100%;
-  height: 100%;
 }
 
 /* home */
 main .home{
   width: 100%;
-  height: 100%;
-  background: url(./image/bg.jpg) no-repeat right/cover;
+  height: 100vh;
+  background: url(./image/bg.jpg) no-repeat right/cover fixed;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
-.home h1{
+main .home::after{
+  content: '';
+  display: block;
   width: 100%;
+  height: 100%;
+  background: linear-gradient( to bottom, #ffffff00, #ffffff00, #ffffff00,  #fff );
+}
+.home .hello{
+  width: 50%;
   position:absolute;
   top: 50%;
-  left: 100px;
+  left: 150px;
+  z-index: 1;
   transform: translateY(-50%);
-  font: 900 3rem var(--basicFont);
+  font: 100 3rem/2em var(--boldFont);
 }
-.home h1 span{
-  width: 100%;
-  display: block;
+.hello .title{
+  display: flex;  
+  flex-wrap: wrap;
+}
+.tit1 p{
+  margin-right: 5px;
+}
+.tit2 p span{
+  font: 100 5rem/1em var(--boldFont);
+  margin-right: 15px;
 }
 .home .mscl{
   width: 80px;
   position: absolute;
-  bottom: 30px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-}
-.mscl::after{
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url(./image/scroll.svg);
-  animation: drag 1.5s infinite;
+  animation: drag 1s infinite ease-in-out;
 }
 @keyframes drag{
-  0%{top: 0; opacity: 0;}
-  100%{top: 20px;opacity: 1;}
+  0%{bottom: 20px;}
+  100%{bottom: 0;}
 }
 .mscl .st0{fill:none;stroke:#000000;stroke-miterlimit:10; stroke-width: 3px;}
 .mscl .st1{fill:none;stroke:#000000;stroke-linecap:round;stroke-miterlimit:10; stroke-width: 3px;}
@@ -120,7 +131,7 @@ main .about{
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  margin-top: 200px;
+  margin-top: 300px;
 }
 .bgtxt{
   width: 100%;
@@ -151,51 +162,20 @@ main .about{
 }
 @keyframes fade1{
   0%{
-    transform: translateX(-50%);
+    transform: translateY(40%);
     opacity: 0;
   }
   100%{
-    transform: translateX(0%);
+    transform: translateY(0%);
     opacity: 1;
   }
 }
 @keyframes fade2{
   0%{
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
   100%{
-    transform: translateX(-50%);
-  }
-}
-.about section .left a:hover::before{
-  content: '';
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: fade .3s;
-}
-.about section .left a:hover::after{
-  content: '이력서보기';
-  color: #fff;
-  font: 300 1.5rem var(--basicFont);
-  border: 2px solid #fff;
-  padding: 5px 20px;
-  border-radius: 15px;
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: fade .3s;
-}
-@keyframes fade{
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
+    transform: translateY(40%);
   }
 }
 .left img{
@@ -232,12 +212,19 @@ main .about{
   display: block;
   font: 300 1.2rem var(--basicFont);
 }
+.right .click{
+  margin-top: 80px;
+  margin-left: 140px;
+  font-weight: 900;
+}
+
 
 
 /* skill */
 main .skill{
   width: 100%;
   margin-top: 300px;
+  position: relative;
 }
 .skill section{
   max-width: 1200px;
@@ -286,7 +273,7 @@ main .skill{
 
 
 /* design */
-main .design{
+main .works{
   width: 100%;
   margin-top: 300px;
   padding-top: 200px;
@@ -294,53 +281,103 @@ main .design{
   box-sizing: border-box;
   background-color: var(--pointBgColor);
 }
-.design section{
+.works .cate{
   max-width: 1200px;
   margin: auto;
+  display: flex;
 }
-.design section h1{
-  font: 900 1.5rem/2em var(--basicFont);
+.cate a{
+  display: block;
+  margin-right: 50px;
+  font: 700 1.3rem/3em var(--basicFont);
 }
-.design section ul{
+.cate a.active{
+  font: 900 1.5rem/2.5em var(--basicFont);
+  letter-spacing: 5px;
+  transition: all .3s;
+}
+.works .menu_list{
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  overflow: hidden;
+}
+.menu_list .worksMenu{
   width: 100%;
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  opacity: 1;
 }
-.design section li{
-  width: 23%;
+.worksMenu .worksList{
+  width: 32%;
+  margin-bottom: 20px;
   overflow: hidden;
 }
-.design section:first-child{
-  margin-bottom: 200px;
-}
-.design section li a{
+.worksMenu .worksList a{
   width: 100%;
   display: inline-block;
   position: relative;
+  object-fit: cover;
 }
-.design section li a:hover::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.design section li a:hover{
-  transform: scale(1.1);
-  transition: all .5s;
-}
-.design section li a img{
+.worksMenu .worksList a img{
   width: 100%;
   object-fit: cover;
   border: 1px solid #bbb;
   box-sizing: border-box;
 }
 
-/* design1 */
-.design .design1 li .full{
+/* works hover */
+.worksMenu .worksList a:hover::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.worksMenu .worksList a:hover img{
+  opacity: 0.5;
+  transform: rotateY(360deg) scale(1.1);
+  filter: blur(3px);
+  transition: all .3s;
+}
+.worksMenu .worksList a .txt{
+  width: 100%;
+  display: none;
+  position: relative;
+}
+.worksMenu .worksList a:hover .txt{
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.worksMenu .worksList a:hover .txt ul{
+  width: 100%;
+  display: inline-block;
+}
+.worksMenu .worksList a:hover .txt ul::before{
+  content: '';
+  display: block;
+  margin-top: 15%;
+}
+.worksMenu .worksList a:hover .txt li{
+  width: 100%;
+  text-align: center;
+  font: 500 1.2rem/1.5em var(--basicFont);
+  margin-bottom: 0;
+  color: #fff;
+  text-shadow: 0 0 8px #000;
+}
+
+
+/* full */
+.worksMenu .worksList .full{
   width: 100%;
   height: 100%;
   position: fixed;
@@ -349,7 +386,7 @@ main .design{
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
 }
-.design .design1 li .full .cont{
+.worksMenu .worksList .full .cont{
   width: 50%;
   height: 80%;
   overflow: scroll;
@@ -359,47 +396,10 @@ main .design{
   transform: translate(-50%, -50%);
   z-index:200;
 }
-.design .design1 li .full .cont img{
+.worksMenu .worksList .full .cont img{
   width: 100%;
 }
-.design .design1 li .full .cont::after{
-  content: '';
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  z-index: 201;
-  background: url(./image/close.svg);
-  display: block;
-  cursor: pointer;
-}
-
-
-/* design2 */
-.design .design2 li .full{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 100;
-}
-.design .design2 li .full .cont{
-  width: 90%;
-  height: 80%;
-  overflow: scroll;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index:200;
-}
-.design .design2 li .full .cont img{
-  width: 100%;
-}
-.design .design2 li .full .cont::after{
+.worksMenu .worksList .full .cont::after{
   content: '';
   width: 30px;
   height: 30px;
@@ -414,39 +414,11 @@ main .design{
 
 
 
-
-
-/* web */
-main .web{
+/* footer */
+footer{
   width: 100%;
-  padding-top: 100px;
-  padding-bottom: 150px;
-  box-sizing: border-box;  
-  background-color: var(--pointBgColor);
-}
-.web section{
-  max-width: 1200px;
-  margin: auto;
-}
-.web section h1{
-  font: 900 1.5rem/2em var(--basicFont);
-}
-.web section ul{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.web section li{
-  width: 23%;
-  margin-bottom: 30px;
-}
-.web section li a{
-  width: 100%;
-  display: inline-block;
-}
-.web section li a img{
-  width: 100%;
-  object-fit: cover;
-  border: 1px solid #bbb;
+  height: 500px;
+  border: 1px solid red;
+  position: relative;
+  /* background-color: var(--pointBgColor); */
 }
