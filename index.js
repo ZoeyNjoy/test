@@ -127,32 +127,25 @@ $(function(){
     },
   });
 
-  let popup = document.querySelectorAll('.worksList')
-  let popupFull = document.querySelectorAll('.worksList .full')
-  let popupClose = document.querySelectorAll('.worksList .full')
-
-  for(let s of popupFull){s.style.display='none'}
-
-  popup.forEach(function(i){
-    i.addEventListener('click',function(e){
-      e.preventDefault()
-      this.nextElementSibling.style.display='block';
-      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-    })
-  })
-  popupClose.forEach(function(i){
-    i.addEventListener('click',function(){
-      this.style.display='none'
-      document.getElementsByTagName('body')[0].style.overflow = 'visible';
-    })
-  })
+  
+  // animejs
+  anime({
+    targets: '.home .mscl',
+    translateY: [-25, 0],
+    opacity:[0, 1],
+    delay:100,
+    duration:1500,
+    loop:true,
+    direction: 'infinite',
+    easing: 'easeOutBounce',
+  });
   anime({
     targets: '.tit1 p',
     delay:anime.stagger(200),
-    translateY: [50, 0],    
+    translateX: [-10, 0],    
     scaleX: [0, 1],
     easing: 'easeInExpo',
-    duration:500
+    duration:300
   });
   anime({
     targets: '.tit2 p',
@@ -160,15 +153,7 @@ $(function(){
     scaleY: [0, 1],
     delay:1500,
   });
-  // 'easeInQuad'	'easeOutQuad'	'easeInOutQuad'	'easeOutInQuad'
-  // 'easeInCubic'	'easeOutCubic'	'easeInOutCubic'	'easeOutInCubic'
-  // 'easeInQuart'	'easeOutQuart'	'easeInOutQuart'	'easeOutInQuart'
-  // 'easeInQuint'	'easeOutQuint'	'easeInOutQuint'	'easeOutInQuint'
-  // 'easeInSine'	'easeOutSine'	'easeInOutSine'	'easeOutInSine'
-  // 'easeInExpo'	'easeOutExpo'	'easeInOutExpo'	'easeOutInExpo'
-  // 'easeInCirc'	'easeOutCirc'	'easeInOutCirc'	'easeOutInCirc'
-  // 'easeInBack'	'easeOutBack'	'easeInOutBack'	'easeOutInBack'
-  // 'easeInBounce'	'easeOutBounce'	'easeInOutBounce'	'easeOutInBounce'
+  
   
 
   setTimeout(function(){
@@ -176,6 +161,8 @@ $(function(){
     $('.worksMenu').css("opacity","1");
     $('.worksMenu').eq(0).show();
   },100);
+
+
 
 $('main .works').each(function(){
   var tab = $(this).find(".cate a");
@@ -186,11 +173,40 @@ $('main .works').each(function(){
     tab.removeClass("active");
     $(this).addClass("active");
     cont.removeClass("active");
-    cont.eq(ind).addClass();
+    cont.eq(ind).addClass(
+      anime({
+        targets: '.worksMenu .worksList', 
+        opacity:[0, 1],
+        scaleX:[0, 1],
+        easing: 'easeInExpo',
+        duration:300
+      })
+    );
     cont.hide();
     cont.eq(ind).show();
   });
 });
+
+let popup = document.querySelectorAll('.design a');
+let popupFull = document.querySelectorAll('.design .full');
+let popupClose = document.querySelectorAll('.design .full');
+
+for(let s of popupFull){s.style.display='none'};
+
+popup.forEach(function(i){
+  i.addEventListener('click',function(e){
+    e.preventDefault()
+    this.nextElementSibling.style.display='block';
+    document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+  })
+});
+popupClose.forEach(function(i){
+  i.addEventListener('click',function(){
+    this.style.display='none'
+    document.getElementsByTagName('body')[0].style.overflow = 'visible';
+  })
+});
+
 
 
 

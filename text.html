@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery-3.6.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+  <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
+  <link rel="stylesheet" href="./common.css">
+  <style>
+    .wrap{
+      width: 100%;
+      position: relative;
+    }
+    .cateWrap{
+  max-width: 1200px;
+  margin: auto;
+}
+.cateWrap .cate{
+    max-width: 1200px;
+    margin: 50px auto 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.cateWrap .cate a{
+    width: 12.5%;
+    font:  500 1.2rem/3em 'Noto Sans', sans-serif;
+    text-align: center;
+    position: relative;
+}
+.cateWrap section{
+  width: 100%;
+}
+.cateWrap section h1{
+  font: 900 1.5rem/2em var(--basicFont);
+}
+.cateWrap section ul{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  opacity: 1;
+}
+.cateWrap section li{
+  width: 32%;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.cateWrap section:first-child{
+  margin-bottom: 200px;
+}
+.cateWrap section li a{
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.cateWrap section li a:hover::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.cateWrap section li a:hover{
+  transform: scale(1.1);
+  transition: all .5s;
+}
+.cateWrap section li a img{
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid #bbb;
+  box-sizing: border-box;
+}
+.cateWrap section li a:hover::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fade .5s;
+}
+.cateWrap section li a:hover img{
+  opacity: 0.5;
+  transform: scale(1.5) translateX(-15px);
+  transition: all .5s;
+}
+.cateWrap section li a .txt{
+  width: 100%;
+  display: none;
+  position: relative;
+}
+.cateWrap section li a:hover .txt{
+  display: block;
+  height: 100%;
+  animation: fade .5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cateWrap section li a:hover .txt ul{
+  width: 100%;
+  display: inline-block;
+}
+.cateWrap section li a:hover .txt ul::before{
+  content: '';
+  display: block;
+  margin-top: 15%;
+}
+.cateWrap  section li a:hover .txt li{
+  width: 100%;
+  height: 2em;
+  text-align: center;
+  font: 500 1.3rem/1.5em var(--basicFont);
+  margin-bottom: 0;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+.cateWrap  section li a:hover .txt .mor{
+  margin-top: 25px;
+  font: 500 1rem/1.5em var(--basicFont);
+}
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.cateWrap .cate .active{
+    font:  900 1.2rem/3em 'Noto Sans', sans-serif;
+} 
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="cateWrap">
+      <div class="cate">
+        <a href="javascript:void(0);" class="active">All</a>
+        <a href="javascript:void(0);">Web</a>
+        <a href="javascript:void(0);">Design</a>
+        <a href="javascript:void(0);">Ps</a>
+      </div>
+      <section>
+      <ul>
+        <li>
+          <a href="#"><img src="./image/img4.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img4-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img10.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img10-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="https://zoeynjoy.github.io/ilsangtrip/" target="_blank"><img src="./image/web01.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>일상과 여행사이</li>
+                <li>반응형페이지</li>
+                <li>메인, 서브(brand)페이지</li>
+                <li>Swiper, observer</li>
+                <li>1주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="https://zoeynjoy.github.io/rejour/" target="_blank"><img src="./image/web02.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>르주르</li>
+                <li>반응형페이지</li>
+                <li>메인페이지</li>
+                <li>Swiper</li>
+                <li>5주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img3.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img3-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="https://zoeynjoy.github.io/twosome/" target="_blank"><img src="./image/web03.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>투썸플레이스</li>
+                <li>반응형페이지</li>
+                <li>서브페이지</li>
+                <li>Swiper</li>
+                <li>2주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img1.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img1-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img5.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img5-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img7.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img7-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img8.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img8-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img9.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img9-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="https://zoeynjoy.github.io/sonatural/" target="_blank"><img src="./image/web04.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>쏘내추럴</li>
+                <li>반응형페이지</li>
+                <li>메인페이지</li>
+                <li>Swiper</li>
+                <li>6주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+      </ul>
+      </section>
+      <section>
+      <ul>
+        <li class="web1">
+          <a href="https://zoeynjoy.github.io/ilsangtrip/" target="_blank"><img src="./image/web01.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>일상과 여행사이</li>
+                <li>반응형페이지</li>
+                <li>메인, 서브(brand)페이지</li>
+                <li>Swiper, observer</li>
+                <li>1주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li class="web2">
+          <a href="https://zoeynjoy.github.io/rejour/" target="_blank"><img src="./image/web02.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>르주르</li>
+                <li>반응형페이지</li>
+                <li>메인페이지</li>
+                <li>Swiper</li>
+                <li>5주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li class="web3">
+          <a href="https://zoeynjoy.github.io/twosome/" target="_blank"><img src="./image/web03.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>투썸플레이스</li>
+                <li>반응형페이지</li>
+                <li>서브페이지</li>
+                <li>Swiper</li>
+                <li>2주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+        <li class="web4">
+          <a href="https://zoeynjoy.github.io/sonatural/" target="_blank"><img src="./image/web04.jpg" alt="">
+            <div class="txt">
+              <ul>
+                <li>쏘내추럴</li>
+                <li>반응형페이지</li>
+                <li>메인페이지</li>
+                <li>Swiper</li>
+                <li>6주/개인작업물</li>
+                <li class="mor">Click 시 페이지로 이동</li>
+              </ul>
+            </div>
+          </a>
+        </li>
+      </ul>
+      </section>
+      <section>
+      <ul>
+        <li>
+          <a href="#"><img src="./image/img1.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img1-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img10.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img10-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img3.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img3-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img4.jpg" alt="이미지"></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img4-1.jpg" alt="">
+            </div>
+          </div>
+        </li>
+      </ul>
+      </section>
+      <section>
+      <ul>
+        <li>
+          <a href="#"><img src="./image/img5.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img5-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img7.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img7-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img8.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img8-1.png" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#"><img src="./image/img9.jpg" alt=""></a>
+          <div class="full">
+            <div class="cont">
+              <img src="./image/img9-1.png" alt="">
+            </div>
+          </div>
+        </li>
+      </ul>
+      </section>
+  </div>
+
+  </div>
+  <script>
+  setTimeout(function(){
+    $('.cateWrap section ul').hide();
+    $('.cateWrap section ul').css("opacity","1");
+    $('.cateWrap section ul').eq(0).show();
+  },100);
+
+$(".cateWrap").each(function(){
+  var tab = $(".cate a");
+  var cont = $("section ul");
+
+  tab.click(function(){
+    var ind=$(this).index();
+    tab.removeClass("active");
+    $(this).addClass("active");
+    cont.removeClass("active");
+    cont.eq(ind).addClass();
+    cont.hide();
+    cont.eq(ind).show();
+  });
+});
+
+
+     let popup = document.querySelectorAll('.cateWrap li a')
+    let popupFull = document.querySelectorAll('.cateWrap li .full')
+    let popupClose = document.querySelectorAll('.cateWrap li .full')
+
+  for(let s of popupFull){s.style.display='none'}
+
+  popup.forEach(function(i){
+    i.addEventListener('click',function(e){
+      e.preventDefault()
+      this.nextElementSibling.style.display='block';
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+    })
+  })
+  popupClose.forEach(function(i){
+    i.addEventListener('click',function(){
+      this.style.display='none'
+      document.getElementsByTagName('body')[0].style.overflow = 'visible';
+    })
+  })
+
+  </script>
+</body>
+</html>

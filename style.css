@@ -7,8 +7,8 @@
   left: 0;
   transition: all .3s;
   transform: translateY(-100%);
-  z-index: 20;
-  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.7);
   border-bottom: 1px solid #bbb;
   box-sizing: border-box;
 }
@@ -22,6 +22,9 @@ header .h_wrap{
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+}
+#header .m_inner{
+  display: none;
 }
 
 /* 헤더 로고 */
@@ -92,7 +95,7 @@ main .home::after{
   position:absolute;
   top: 50%;
   left: 150px;
-  z-index: 1;
+  z-index: 2;
   transform: translateY(-50%);
   font: 100 3rem/2em var(--boldFont);
 }
@@ -112,12 +115,6 @@ main .home::after{
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
-  animation: drag 1s infinite ease-in-out;
-}
-@keyframes drag{
-  0%{bottom: 20px;}
-  100%{bottom: 0;}
 }
 .mscl .st0{fill:none;stroke:#000000;stroke-miterlimit:10; stroke-width: 3px;}
 .mscl .st1{fill:none;stroke:#000000;stroke-linecap:round;stroke-miterlimit:10; stroke-width: 3px;}
@@ -133,28 +130,13 @@ main .about{
   overflow: hidden;
   margin-top: 300px;
 }
-.bgtxt{
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: -1;
-  font: 500 30rem var(--engFont);
-  opacity: 0.1;
-  animation: bgtxt 30s infinite linear;
-  color:var(--bgFontColor);
-}
-@keyframes bgtxt {
-  0%{margin-left:0;}
-  100%{margin-left: -96%;}
-}
 .about section{
   max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 .about section .left{
   width: 49%;
@@ -188,12 +170,9 @@ main .about{
 }
 .right .typing{
   font: 500 3rem var(--boldFont);
+  margin-bottom: 30px;
 }
-.right ul{
-  position: absolute;
-  top: 30%;
-}
-.right li{
+.int p{
   width: 100%;
   font: 300 1.3rem/1.5em var(--basicFont);
   margin-bottom: 20px;
@@ -201,18 +180,18 @@ main .about{
   flex-wrap: wrap;
   color: var(--fontColor);
 }
-.right li span{
+.int p span{
   width: 24%;
   display: block;
 }
-.right li .small{
+.int p .small{
   width: 100%;
   padding-left: 24%;
   box-sizing: border-box;
   display: block;
   font: 300 1.2rem var(--basicFont);
 }
-.right .click{
+.int .click{
   margin-top: 80px;
   margin-left: 140px;
   font-weight: 900;
@@ -280,6 +259,8 @@ main .works{
   padding-bottom: 200px;
   box-sizing: border-box;
   background-color: var(--pointBgColor);
+  position: relative;
+  z-index: 1;
 }
 .works .cate{
   max-width: 1200px;
@@ -293,7 +274,7 @@ main .works{
 }
 .cate a.active{
   font: 900 1.5rem/2.5em var(--basicFont);
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   transition: all .3s;
 }
 .works .menu_list{
@@ -305,10 +286,11 @@ main .works{
 .menu_list .worksMenu{
   width: 100%;
   position: relative;
+  z-index: 1;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   opacity: 1;
+  justify-content: space-between;
 }
 .worksMenu .worksList{
   width: 32%;
@@ -319,7 +301,9 @@ main .works{
   width: 100%;
   display: inline-block;
   position: relative;
-  object-fit: cover;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 20;
 }
 .worksMenu .worksList a img{
   width: 100%;
@@ -337,10 +321,11 @@ main .works{
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 200;
 }
 .worksMenu .worksList a:hover img{
   opacity: 0.5;
-  transform: rotateY(360deg) scale(1.1);
+  transform: scale(1.1);
   filter: blur(3px);
   transition: all .3s;
 }
@@ -348,6 +333,7 @@ main .works{
   width: 100%;
   display: none;
   position: relative;
+  z-index: 10;
 }
 .worksMenu .worksList a:hover .txt{
   display: block;
@@ -356,6 +342,7 @@ main .works{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
 }
 .worksMenu .worksList a:hover .txt ul{
   width: 100%;
@@ -377,36 +364,37 @@ main .works{
 
 
 /* full */
-.worksMenu .worksList .full{
+.worksMenu .design .full{
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 200;
 }
-.worksMenu .worksList .full .cont{
+.worksMenu .design .full .cont{
   width: 50%;
   height: 80%;
-  overflow: scroll;
+  overflow-y: scroll;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index:200;
+  z-index:20;
+  animation:  infinite;
 }
-.worksMenu .worksList .full .cont img{
+.worksMenu .design .full .cont img{
   width: 100%;
 }
-.worksMenu .worksList .full .cont::after{
+.worksMenu .design .full .cont::after{
   content: '';
   width: 30px;
   height: 30px;
   position: absolute;
   top: 30px;
   right: 30px;
-  z-index: 201;
+  z-index: 30;
   background: url(./image/close.svg);
   display: block;
   cursor: pointer;
@@ -417,8 +405,17 @@ main .works{
 /* footer */
 footer{
   width: 100%;
-  height: 500px;
+  padding-top: 150px;
   border: 1px solid red;
   position: relative;
-  /* background-color: var(--pointBgColor); */
+}
+footer .contact{
+  max-width: 1200px;
+  margin: auto;
+}
+footer .contact h2{
+  font:500 5rem var(--boldFont);
+}
+footer .contact p{
+  font: 300 1.3rem/1.5em var(--basicFont);
 }
